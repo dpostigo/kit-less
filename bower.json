@@ -1,0 +1,24 @@
+{
+  "name": "kit-less",
+  "version": "0.0.1",
+  "authors": [
+    "Dani Postigo <dani.postigo@gmail.com>"
+  ],
+  "description": "kit less files",
+  "main": "dist/kit.css",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "kit",
+    "less"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
