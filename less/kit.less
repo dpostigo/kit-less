@@ -1,0 +1,114 @@
+// @import (reference) 'basscss.css';
+@import 'kit/variables';
+@import 'kit/components';
+@import 'kit/fonts';
+@import 'kit/icons';
+
+@import 'kit/utility';
+
+
+
+
+
+#kit {
+	.makeFont(@name) {
+		@fontVariable: '@{name}';
+		#kit > .makeFontSelector(@name, @@fontVariable);
+	}
+
+	.makeFont(@name, @style) {
+		@Light: light;
+		@Semibold: semibold;
+		@fontVariable: '@{name}@{style}';
+		@selector: @name;
+		// #kit > .makeFontSelector(@name, @@fontVariable);
+
+		& when (@style=Regular) {
+			// .@{selector} { font-family: @@fontVariable; }
+			#kit > .makeFontSelector(@selector, @@fontVariable);
+		}
+
+		& when not (@style=Regular) {
+			@styleSelector: @@style;
+			// #kit > .makeFontSelector(@thing, @@fontVariable);
+			.@{selector}.@{styleSelector} { font-family: @@fontVariable; font-weight: normal}
+		}
+	}
+
+
+
+	.makeThing(@name, @style) when (@style=Light) {
+		@fontVariable: '@{name}@{style}';
+		.@{name}.light { font-family: @@fontVariable; font-weight: normal}
+	}
+
+	.makeFontSelector(@selector, @fontName) {
+		.@{selector} { font-family: @fontName; }
+
+	}
+}
+
+
+
+
+
+div.kit-icon-text {
+	&:extend(.list-reset, .flex, .flex-center);
+
+	svg {
+		// .mr1;
+		margin-right: 5px;
+	}
+
+
+
+	.geomicon {
+		.kit-size(@kitcomponent-height);
+
+		
+	}
+
+
+
+	.component-text;
+	
+}
+
+div.kit-inline-nav {
+
+	&:extend(.bg-darken-1, .rounded);
+	&:extend(.sm-flex);
+
+	.mb1;
+
+	div:extend(.sm-flex) {};
+	div div:extend(.p1) {};
+}
+
+
+
+// div.kit-inline-nav {
+// 	&:extend(.bg-darken-1, .rounded, .center);
+// 	// &:extend(.flex, .flex-center);
+
+// 	ul {
+// 		.block;
+// 		&:extend(.list-reset);
+
+// 		// &:extend(.flex);
+// 		// &:extend(.flex, .flex-center);
+// 		&:extend(.mx-auto);
+
+// 		&:extend(.sm-flex);
+// 		&:extend(.flex-center);
+// 		// &:extend(.nowrap);
+// 		.p1;
+
+// 		li {
+// 			.border;
+// 			&:extend(.flex-none);
+// 		};
+// 		// &:extend(.bg-blue);
+
+// 	}
+// }

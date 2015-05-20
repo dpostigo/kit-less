@@ -1,0 +1,49 @@
+
+
+
+.uppercase {text-transform: uppercase; }
+
+
+
+
+.emboss { text-shadow: 0px 1px #FFF; }
+
+
+
+
+.text-swatches(@name, @n, @i: 1) when (@i =< @n) {
+  .text-swatch(@name, @i);
+  .text-swatches(@name, @n, (@i + 1));
+}
+
+.text-swatch(@name, @number) {
+	.@{name}-@{number} {
+		@var: '@{name}@{number}';
+		color: @@var;
+	}
+}
+
+
+
+.font-sizin(28);
+
+.font-sizin(@n, @i: 1) when (@i =< @n) {
+  .font-@{i} {
+    font-size: unit(@i, px);
+  }
+  .font-sizin(@n, (@i + 1));
+}
+
+// mixins
+
+.font-family(@selector, @fontName) {
+	.@{selector} {
+		font-family: @fontName;
+	}
+}
+
+
+.slate-shadow {
+	.box-shadow(0px 1px 3px 0px @slateShadow);
+}
+
